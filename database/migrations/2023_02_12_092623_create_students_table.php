@@ -18,9 +18,11 @@ class CreateStudentsTable extends Migration
             $table->string("name");
             $table->string("description");
             $table->string("class");
-            $table->mediumText("phone")->unique();
-            $table->string('cnic')->unique();
+            $table->mediumText("phone");
+            $table->string('cnic');
             $table->boolean("status");
+            $table->unsignedBigInteger("role_id");
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });
     }
